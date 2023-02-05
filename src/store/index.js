@@ -22,7 +22,9 @@ export default createStore({
     },
     toggleIsInCard(state){
       state.isInCart = !state.isInCart
-      console.log(  state.isInCart )
+    },
+    initStateIsInCart( state ){
+      state.cart.checkoutStatus = null
     }
   },
   actions: {

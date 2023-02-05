@@ -37,6 +37,9 @@ export default {
     decrementProductInventory(state, product){
       product.inventory--
     },
+    addProductProduct(state, product){
+      product.inventory++
+    }
     
   }
 }

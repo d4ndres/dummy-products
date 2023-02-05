@@ -1,3 +1,7 @@
+:root {
+    --vue-color: #fff;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,6 +9,12 @@
     list-style: none;
     outline: none;
 }
+button {
+    cursor: pointer;
+}
 html {
     font-size: 15px;
+}
+figure {
+    line-height: 0;
 }

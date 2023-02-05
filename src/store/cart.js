@@ -14,7 +14,9 @@ export default {
         return {
           title: product.title,
           price: product.price,
-          quantity: cartItem.quantity
+          quantity: cartItem.quantity,
+          thumbnail: product.thumbnail,
+          id: product.id
         }
       })
     },
@@ -31,12 +33,12 @@ export default {
         const item = state.cart.find( item => item.id == product.id)
         return item ? item.quantity : null
       }
-    }
+    },
+
   },
   actions: {
 
     addProductToCart( {state, commit, getters }, product){
-
 
       if ( !getters.productIsInStock(product) ) return;
 
@@ -63,8 +65,21 @@ export default {
         }
         
       )
+    },
+    addProductToCartFromCart( {rootState, dispatch }, itemCart ){
+      const product = rootState.products.products.find( product => product.id == itemCart.id)
+      dispatch('addProductToCart', product)
+    },
+    removeProdcutCart( {state, commit, rootState}, itemCart){
+      const index = state.cart.findIndex( item => item.id == itemCart.id)
+      commit('removeProdcutCart', index)
+      const product = rootState.products.products.find( product => product.id == itemCart.id)
+      commit('addProductProduct', product)
+      
+
     }
   },
+
   mutations: {
     pushProductToCart( state, productId){
       state.cart.push({
@@ -81,6 +96,12 @@ export default {
     },
     setCheckoutStatus(state, status){
       state.checkoutStatus = status
+    },
+    removeProdcutCart( state, index){
+      if(state.cart[index].quantity == 1) 
+        state.cart.splice( index, 1 )
+      else
+        state.cart[index].quantity--
     }
 
   }
