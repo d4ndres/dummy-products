@@ -1,15 +1,14 @@
 <template>
     <div >
-        <h2>Product List</h2>
+        <!-- <h2>Product List</h2> -->
         
-        <input type="text" v-model="search">
 
         <LoaderX v-if="loading" />
         <ul v-else class="products">
 
 
             <ProductCard 
-              v-for="product in searchMatch" 
+              v-for="product in productMatch" 
               :key="product" 
               :product="product"></ProductCard>
 
@@ -43,16 +42,7 @@ export default{
         ...mapState({
           products: state => state.products.products
         }),
-        ...mapGetters(['productIsInStock']),
-        // products() {
-        //     return this.$store.state.products
-        // },
-        // productIsInStock(){
-        //     return this.$store.getters.productIsInStock
-        // }
-        searchMatch(){
-          return this.$store.state.products.products.filter( product => product.lowercaseTitle.includes( this.search ) )
-        }
+        ...mapGetters(['productIsInStock', 'productMatch']),
     },
     created(){
         this.loading = true
@@ -72,6 +62,7 @@ export default{
         display: grid;
         gap: 1rem;
         grid-template-columns: repeat( auto-fit, minmax(320px, 1fr) );
+        grid-auto-columns: 500px;
         list-style: none;
     }
 </style>

@@ -34,7 +34,9 @@ export default {
 }
 .box-limit {
   width: min(1000px, 100%);
-  margin: 50px auto;
+  margin: 0px auto;
+  position: relative;
+  overflow: hidden;
 }
 
 </style>

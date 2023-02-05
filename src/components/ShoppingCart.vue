@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div 
+        class="layout"
+        :class="{ 'layout-right': $store.state.isInCart }">
         <h1>Shopping Cart</h1>
         <ul>
             <li v-for="product in products" :key="product">
@@ -11,7 +13,6 @@
             Total: {{ total }}
         </p>
         <button 
-            
             @click="checkout">Checkout</button>
         <p v-show="checkoutStatus">{{ checkoutStatus }}</p>
     </div>
@@ -43,4 +44,11 @@
 
 </script>
 <style scoped>
+
+    .layout-right{
+
+        transform: translateX( 0vw);
+    }
+
+
 </style>
