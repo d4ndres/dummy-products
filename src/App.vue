@@ -1,26 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <HeaderNav></HeaderNav>
+  <div class="box-limit">
+    <ProductList></productList>
+    <ShoppingCart></ShoppingCart>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ProductList from './components/ProductList.vue'
+import ShoppingCart from './components/ShoppingCart.vue'
+import HeaderNav from './components/HeaderNav.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ProductList,
+    ShoppingCart,
+    HeaderNav
+
   }
 }
 </script>
 
 <style>
+@import url('@/assets/main.css');
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
+.box-limit {
+  width: min(1000px, 100%);
+  margin: 50px auto;
+}
+
 </style>
